@@ -1,6 +1,7 @@
 ---
  - name: manage docker container
    hosts: all
+   ignore_error: yes
    tasks:
      - name: install docker
        yum:
@@ -23,6 +24,10 @@
        commnad: chown itadmin:itadmin /pro1
      - name: add itadmin into docker group
        command: gpasswd -a itadmin docker
+     - name: remove existing container
+       shell: docker rm -f c1
+     - name: remove existing image 
+       shell: docker rmi myweb
      - name: create container from docker file
        shell: cd /pro1; docker build -t myweb .
      - name: create docker container
