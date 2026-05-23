@@ -21,7 +21,7 @@
          src: Dockerfile
          dest: /pro1/
      - name: change onwer and group owner
-       commnad: chown itadmin:itadmin /pro1
+       command: chown itadmin:itadmin /pro1
      - name: add itadmin into docker group
        command: gpasswd -a itadmin docker
      - name: remove existing container
